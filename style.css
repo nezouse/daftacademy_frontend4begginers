@@ -136,7 +136,7 @@ body {
 
 .band-members__desc {
   font-size: 13px;
-  color: #ccc8ff80;
+  color: #ccc8ff;
 }
 
 .content-section__header {
@@ -178,6 +178,7 @@ body {
 .about-section__desc-details {
   font-size: 13px;
   margin: 0;
+  color: #ccc8ffcc;
 }
 
 .concerts {
