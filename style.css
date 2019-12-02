@@ -165,51 +165,53 @@ body {
   color: #ccc8ffcc;
 }
 
+.concerts {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
 @supports (not (display: grid)) {
   .concerts {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 3rem;
-    margin-bottom: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
-}
 
-.concerts {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.concerts__item {
-  width: 48%;
+  .concerts__item {
+    width: 48%;
+  }
 }
 
 .concerts__image {
   width: 100%;
   border-bottom: #ef008e solid 0.3rem;
 }
-@supports (not (display: grid)) {
-  .gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 2rem;
-    row-gap: 1.5rem;
-    margin-bottom: 3rem;
-  }
-
-  .gallery__item {
-    border-top: #ef008e solid 0.3rem;
-  }
-}
 
 .gallery {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 2rem;
+  row-gap: 1.5rem;
+  margin-bottom: 3rem;
 }
+
 .gallery__item {
-  width: 32.5%;
-  margin-bottom: 2.5rem;
+  border-top: #ef008e solid 0.3rem;
+}
+
+@supports (not (display: grid)) {
+  .gallery {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .gallery__item {
+    width: 32.5%;
+    margin-bottom: 2.5rem;
+    border-top: #ef008e solid 0.3rem;
+  }
 }
 
 .gallery__image {
@@ -289,6 +291,7 @@ body {
 }
 
 .button {
+  padding: 1rem;
   grid-area: button;
   background-color: #ccc8ff1a;
   color: #ccc8ffcc;
