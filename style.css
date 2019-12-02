@@ -1,12 +1,4 @@
-/*
-Przeglądarki internetowe nadają znacznikom HTML wartości początkowe,
-które się różnią w zależności od producenta (np. Chrome, Firefox, Opera, Internet Explorer, Microsoft Edge).
-Dlatego popularną praktyką jest tworzenie tzw. resetów,
-czyli plików CSS zawierających reguły, które nadpisują te wartości,
-aby były one jednolite niezalenie od przeglądarki.
-
-Więcej na ten temat: https://cssreset.com/what-is-a-css-reset/
-*/
+/* RESET */
 
 * {
   box-sizing: border-box;
@@ -29,14 +21,11 @@ ul {
   padding: 0;
 }
 
-/*
-ZAGADNIENIE PONADPROGRAMOWE
+p {
+  margin: 0;
+}
 
-Rekomendowany zestaw właściwości, które pozwalają na ukrycie tekstu w taki sposób,
-że będzie niewidoczny do standardowego użytkownika, a czytniki ekranowe wciąż będą go czytać.
-
-Więcej na ten temat: https://webaim.org/techniques/css/invisiblecontent/
-*/
+/* SCREENREADERS */
 .screen-reader-only {
   position: absolute;
   left: -10000px;
@@ -46,46 +35,24 @@ Więcej na ten temat: https://webaim.org/techniques/css/invisiblecontent/
   overflow: hidden;
 }
 
-/*
-Ustawiając sekcje nagłówka i stopki w pozycji 'fixed' sprawiamy,
-że niezależnie od pozycji paska przewijania elementy te będą znajdowały się
-w tej samej pozycji względem okna przeglądarki.
-Natomiast pozycję tę ustawiamy za pomocą parametrów 'top', 'bottom', 'right', 'left'.
-*/
+/* FIXED SIDEBAR */
 .page-header {
   position: fixed;
-  top: 50px;
-  left: 50px;
+  top: 5rem;
+  left: 5rem;
 }
 
 .page-footer {
   position: fixed;
-  bottom: 50px;
-  left: 50px;
+  bottom: 5rem;
+  left: 5rem;
 }
 
-/*
-Lewy margines ustawiony na kontenerze z główną zawartością strony sprawia,
-że nie będzie ona nachodzić na nagłówek i stopkę niezależnie od pozycji paska przewijania.
-Na projekcie graficznym sekcja menu ma szerokość około 170px i jest oddalona od krawędzi ekranu
-o 50px, więc można założyć, że 220px marginesu będzie wartością stosunkowo bezpieczną.
-Z kolei spady (padding) nadane na kontener wyznaczają minimalną odległość, na jaką będzie oddalona
-treść strony od otaczających ją granic kontenera (wartość "0 10%" jest
-skrótem od padding-top: 0, padding-bottom: 0, padding-left: 10%, padding-right: 10%).
-Właściwość "text-align: right" przykleja zawartość do prawej strony
-(oddziałuje na elementy, które są elementami inline'owymi, np. tekst, znaczniki <a>, <span> czy elementy z nadanym stylem "display: inline-block").
-*/
 .page-content {
-  margin-left: 220px;
-  padding: 0 5% 0 16%;
+  margin-left: 22rem;
+  padding: 0 10rem;
 }
 
-/*
-Projekt graficzny zakłada, że każda sekcja strony będzie wypełniać całą wysokość okna przeglądarki
-lub więcej, jeśli zawartość danej sekcji jest wyższa. Dlatego świetnym rozwiązaniem
-będzie użycie jednostki "vh", która oznacza 1% wysokości okna przeglądarki z właściwością "min-height",
-która wymusza wysokość elementu na zadaną wartość lub wyższą.
-*/
 .content-section {
   min-height: 100vh;
 }
@@ -96,8 +63,10 @@ html {
 }
 
 body {
-  background: url("./images/background.svg") center;
-  background-size: 100vw 100vh;
+  background-image: url("./images/background.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
@@ -120,11 +89,23 @@ body {
 
 .band-members {
   display: flex;
-  padding-top: 15rem;
+  margin-top: 15vh;
+}
+
+.band-members__item {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.band-members__item > * + * {
+  margin-top: 1rem;
 }
 
 .band-members__image {
-  max-width: 100%;
+  width: 100%;
+  flex-grow: 1;
 }
 
 .band-members__name {
@@ -150,21 +131,24 @@ body {
 }
 
 .content-section__image {
-  margin-left: 15%;
-  width: 80%;
   border-top: #ef008e solid 0.3rem;
+  width: 100%;
+}
+
+.about-section {
+  position: relative;
+  margin-bottom: 10rem;
+  margin-left: 21.5rem;
 }
 
 .about-section__desc {
   color: white;
-  position: relative;
-  width: 32.3rem;
-  height: 30rem;
+  position: absolute;
+  width: 31rem;
   background-color: #25072e;
   padding: 3rem;
-  top: -22rem;
-  margin-bottom: -15rem;
-  right: 12rem;
+  bottom: 0rem;
+  left: -21.5rem;
   border-bottom: #ef008e solid 0.3rem;
 }
 
@@ -172,7 +156,7 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
-  padding-bottom: 3rem;
+  padding-bottom: 2rem;
 }
 
 .about-section__desc-details {
@@ -181,36 +165,69 @@ body {
   color: #ccc8ffcc;
 }
 
+@supports (not (display: grid)) {
+  .concerts {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3rem;
+    margin-bottom: 5rem;
+  }
+}
+
 .concerts {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.concerts__item {
+  width: 48%;
 }
 
 .concerts__image {
-  max-width: 100%;
+  width: 100%;
   border-bottom: #ef008e solid 0.3rem;
+}
+@supports (not (display: grid)) {
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .gallery__item {
+    border-top: #ef008e solid 0.3rem;
+  }
 }
 
 .gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 2rem;
-  margin-bottom: 3rem;
-  row-gap: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-
 .gallery__item {
-  border-top: #ef008e solid 0.3rem;
+  width: 32.5%;
+  margin-bottom: 2.5rem;
 }
 
 .gallery__image {
-  max-width: 100%;
+  width: 100%;
+}
+
+.content-section__video-container {
+  position: relative;
+  padding-top: 56%;
 }
 
 .content-section__video {
+  position: absolute;
   border-top: #ef008e solid 0.3rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .social-links {
@@ -252,7 +269,7 @@ body {
 .concerts__info {
   display: grid;
   margin-top: 2rem;
-  grid-template-columns: 1fr 12rem;
+  grid-template-columns: 2fr 1fr;
   grid-template-areas:
     "date button"
     "location button";
@@ -272,8 +289,6 @@ body {
 }
 
 .button {
-  margin: 0 auto 0 0;
-  padding: 1rem 2rem 1rem 2rem;
   grid-area: button;
   background-color: #ccc8ff1a;
   color: #ccc8ffcc;
@@ -292,7 +307,7 @@ body {
   grid-template-columns: 1fr 1fr;
 }
 
-address {
+.address {
   margin: auto;
 }
 
@@ -317,4 +332,128 @@ address {
   padding: 1rem;
   color: #ccc8ff;
   border: none;
+}
+
+@media (max-width: 800px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  html {
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 320px) {
+  html {
+    font-size: 6px;
+  }
+}
+
+@media (orientation: portrait) {
+  /* html {
+    font-size: 8px;
+  } */
+
+  .page-header {
+    margin-top: 4rem;
+    position: static;
+    text-align: center;
+    margin-bottom: -6rem;
+  }
+
+  .page-content {
+    margin: 0;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  .content-section {
+    min-height: auto;
+  }
+
+  .content-section__header {
+    text-align: center;
+  }
+
+  .band-members {
+    flex-direction: column;
+  }
+
+  .band-members > .band-members__item + .band-members__item {
+    margin-top: 6rem;
+  }
+
+  .concerts,
+  .gallery,
+  .contact {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-section {
+    margin-left: 0;
+    min-height: auto;
+    margin-bottom: 20rem;
+  }
+
+  .about-section__desc {
+    left: 0;
+    bottom: -20rem;
+    margin-left: 10%;
+    width: 80%;
+  }
+
+  .concerts {
+    margin-bottom: 0;
+  }
+
+  .concerts__info {
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  .concerts__location {
+    margin-bottom: 1rem;
+  }
+
+  .gallery > .gallery__item + .gallery__item {
+    margin-top: 1.5rem;
+  }
+
+  .address {
+    margin-top: 1rem;
+  }
+
+  .form {
+    margin-top: 1.5rem;
+  }
+
+  .form__label {
+    text-align: left;
+  }
+
+  .form__input {
+    margin-top: 0.2rem;
+    width: 100%;
+  }
+
+  .page-footer {
+    margin: 4rem 0 4rem 0;
+    position: static;
+  }
+
+  .social-links {
+    flex-direction: row;
+    justify-content: space-around;
+    height: auto;
+  }
 }

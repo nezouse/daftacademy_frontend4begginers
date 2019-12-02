@@ -2,6 +2,12 @@
 <html lang="en">
   <head>
     <title>6BM Band Official Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
   <body>
@@ -106,7 +112,7 @@
             <header class="concerts__info">
               <p class="concerts__date">20.12.2018</p>
               <p class="concerts__location">Lublin, klub XXX</p>
-              <button class="button button--right">Buy a ticket</button>
+              <button class="button">Buy a ticket</button>
             </header>
           </article>
           <article class="concerts__item">
@@ -118,7 +124,7 @@
             <header class="concerts__info">
               <p class="concerts__date">20.12.2018</p>
               <p class="concerts__location">Lublin, klub XXX</p>
-              <button class="button button--right">Buy a ticket</button>
+              <button class="button">Buy a ticket</button>
             </header>
           </article>
           <article class="concerts__item">
@@ -130,7 +136,7 @@
             <header class="concerts__info">
               <p class="concerts__date">20.12.2018</p>
               <p class="concerts__location">Lublin, klub XXX</p>
-              <button class="button button--right">Buy a ticket</button>
+              <button class="button">Buy a ticket</button>
             </header>
           </article>
           <article class="concerts__item">
@@ -142,22 +148,24 @@
             <header class="concerts__info">
               <p class="concerts__date">20.12.2018</p>
               <p class="concerts__location">Lublin, klub XXX</p>
-              <button class="button button--right">Buy a ticket</button>
+              <button class="button">Buy a ticket</button>
             </header>
           </article>
         </div>
       </section>
       <section id="video" class="content-section">
         <h2 class="content-section__header">Video</h2>
-        <iframe
-          class="content-section__video"
-          width="853"
-          height="480"
-          src="https://www.youtube.com/embed/AstRXh-vKNI?rel=0"
-          frameborder="0"
-          allow="autoplay; encrypted-media"
-          allowfullscreen
-        ></iframe>
+        <div class="content-section__video-container">
+          <iframe
+            class="content-section__video"
+            width="853"
+            height="480"
+            src="https://www.youtube.com/embed/AstRXh-vKNI?rel=0"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+          ></iframe>
+        </div>
       </section>
       <section id="photos" class="content-section">
         <h2 class="content-section__header">Photos</h2>
@@ -165,63 +173,108 @@
           <li class="gallery__item">
             <img
               class="gallery__image"
-              src="./images/band05_JakubBodys.jpg"
+              srcset="
+                ./images/band05_JakubBodys.jpg,
+                ./images/band05_JakubBodys@2.jpg 2x,
+                ./images/band05_JakubBodys@3.jpg 3x
+              "
+              src="./images/band05_JakubBodys@3.jpg"
               alt="Image of band vocalist during a concert"
             />
           </li>
           <li class="gallery__item">
             <img
               class="gallery__image"
-              src="./images/band06_JakubBodys.jpg"
+              srcset="
+                ./images/band06_JakubBodys.jpg,
+                ./images/band06_JakubBodys@2.jpg 2x,
+                ./images/band06_JakubBodys@3.jpg 3x
+              "
+              src="./images/band06_JakubBodys@3.jpg"
               alt="Image of band drummer during a concert"
             />
           </li>
           <li class="gallery__item">
             <img
               class="gallery__image"
-              src="./images/band07.jpg"
+              srcset="
+                ./images/band07.jpg,
+                ./images/band07@2.jpg 2x,
+                ./images/band07@3.jpg 3x
+              "
+              src="./images/band07@3.jpg"
               alt="Image of band members at the construction site"
             />
           </li>
           <li class="gallery__item">
             <img
               class="gallery__image"
-              src="./images/band08.jpg"
+              srcset="
+                ./images/band08.jpg,
+                ./images/band08@2.jpg 2x,
+                ./images/band08@3.jpg 3x
+              "
+              src="./images/band08@3.jpg"
               alt="Image of band members posing against the wall with graffiti"
             />
           </li>
           <li class="gallery__item">
             <img
               class="gallery__image"
-              src="./images/band09.jpg"
+              srcset="
+                ./images/band09.jpg,
+                ./images/band09@2.jpg 2x,
+                ./images/band09@3.jpg 3x
+              "
+              src="./images/band09@3.jpg"
               alt="Image of band members standing in the shadows"
             />
           </li>
           <li class="gallery__item">
             <img
               class="gallery__image"
-              src="./images/band10.jpg"
+              srcset="
+                ./images/band10.jpg,
+                ./images/band10@2.jpg 2x,
+                ./images/band10@3.jpg 3x
+              "
+              src="./images/band10@3.jpg"
               alt="Image of band members standing at the construction site"
             />
           </li>
           <li class="gallery__item">
             <img
               class="gallery__image"
-              src="./images/band11.jpg"
+              srcset="
+                ./images/band11.jpg,
+                ./images/band11@2.jpg 2x,
+                ./images/band11@3.jpg 3x
+              "
+              src="./images/band11@3.jpg"
               alt="Image of band vocalist during a concert"
             />
           </li>
           <li class="gallery__item">
             <img
               class="gallery__image"
-              src="./images/band04_JakubBodys.jpg"
+              srcset="
+                ./images/band04_JakubBodys.jpg,
+                ./images/band04_JakubBodys@2.jpg 2x,
+                ./images/band04_JakubBodys@3.jpg 3x
+              "
+              src="./images/band04_JakubBodys@3.jpg"
               alt="Image of band keyboard player during a concert"
             />
           </li>
           <li class="gallery__item">
             <img
               class="gallery__image"
-              src="./images/band03_WiechnikMarcin.jpg"
+              srcset="
+                ./images/band03_WiechnikMarcin.jpg,
+                ./images/band03_WiechnikMarcin@2.jpg 2x,
+                ./images/band03_WiechnikMarcin@3.jpg 3x
+              "
+              src="./images/band03_WiechnikMarcin@3.jpg"
               alt="Image of band vocalist and keyboard player during a concert"
             />
           </li>
@@ -235,7 +288,7 @@
             src="./images/band12.jpg"
             alt="Image of band members posing next to a train"
           />
-          <address>
+          <address class="address">
             Tel: 123 456 789<br />
             E-mail: 6bmmusic@gmail.com
           </address>
